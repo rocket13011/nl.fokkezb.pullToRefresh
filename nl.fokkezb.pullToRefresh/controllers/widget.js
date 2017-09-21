@@ -30,23 +30,12 @@ $.getControl = getControl;
 
   _.extend($, args);
 
-  if (OS_IOS) {
     refreshControl = Ti.UI.createRefreshControl(args);
     refreshControl.addEventListener('refreshstart', onRefreshstart);
 
     list.refreshControl = refreshControl;
 
     $.addTopLevelView(list);
-
-  } else if (OS_ANDROID) {
-    refreshControl = require('com.rkam.swiperefreshlayout').createSwipeRefresh(_.extend({
-      view: list
-    }, args));
-
-    refreshControl.addEventListener('refreshing', onRefreshstart);
-
-    $.addTopLevelView(refreshControl);
-  }
 
 })(arguments[0] || {});
 
@@ -67,12 +56,7 @@ function hide() {
     return;
   }
 
-  if (OS_IOS) {
     refreshControl.endRefreshing();
-
-  } else if (OS_ANDROID) {
-    refreshControl.setRefreshing(false);
-  }
 }
 
 function show() {
@@ -81,12 +65,7 @@ function show() {
     return;
   }
 
-  if (OS_IOS) {
     refreshControl.beginRefreshing();
-
-  } else if (OS_ANDROID) {
-    refreshControl.setRefreshing(true);
-  }
 }
 
 function getList() {
