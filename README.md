@@ -1,7 +1,7 @@
 # Alloy *Pull to Refresh* Widget
 [![gitTio](http://gitt.io/badge.svg)](http://gitt.io/component/nl.fokkezb.pullToRefresh) [![NPM](https://img.shields.io/npm/v/nl.fokkezb.pulltorefresh.svg?style=flat-square)](https://www.npmjs.com/package/nl.fokkezb.pulltorefresh) [![René Pot](https://img.shields.io/badge/maintainer-René_Pot-yellow.svg?style=flat-square)](https://github.com/Topener)
 
-The [Alloy](http://appcelerator.com/alloy) *Pull to Refresh* widget is a cross-platform no-brainer wrapper of [Ti.UI.RefreshControl](http://docs.appcelerator.com/titanium/latest/#!/api/Titanium.UI.RefreshControl) for iOS and Ivan's fork of [Ti.SwipeRefreshLayout](https://github.com/iskugor/Ti.SwipeRefreshLayout) for Android.
+The [Alloy](http://appcelerator.com/alloy) *Pull to Refresh* widget is a cross-platform no-brainer wrapper of [Ti.UI.RefreshControl](http://docs.appcelerator.com/titanium/latest/#!/api/Titanium.UI.RefreshControl) for iOS and Android.
 
 Before version 2.0.0 this widget emulated the native Pull to Refresh concept for `Ti.UI.TableView` on both platforms. Since 2.0.0 it uses the native controls now available in Titanium Core and through Ivan's module for both `Ti.UI.TableView` and `Ti.UI.ListView`.
 
@@ -19,17 +19,7 @@ Also take a look at the [Infinite Scroll](https://github.com/FokkeZB/nl.fokkezb.
 
 ## Usage
 
-1. Download and install the [distribution](https://github.com/iskugor/Ti.SwipeRefreshLayout/tree/master/dist) 0.4.1 or later of Ivan's fork of [Ti.SwipeRefreshLayout](http://gitt.io/component/com.rkam.swiperefreshlayout).
-
-2. Install the widget via gitTio: [![gitTio](http://gitt.io/badge.svg)](http://gitt.io/component/nl.fokkezb.pullToRefresh)
-
-	`gittio install nl.fokkezb.pullToRefresh`
-	
-  Or NPM: [![NPM](https://img.shields.io/npm/v/nl.fokkezb.pulltorefresh.svg?style=flat-square)](https://www.npmjs.com/package/nl.fokkezb.pulltorefresh)
-  
-    `npm i --save nl.fokkezb.pulltorefresh`
-
-3. Wrap the widget around your `<ListView>` or `<TableView>` in the view:
+1. Wrap the widget around your `<ListView>` or `<TableView>` in the view:
 
 		<Alloy>
 			<Collection src="myCollection" />
@@ -46,7 +36,7 @@ Also take a look at the [Infinite Scroll](https://github.com/FokkeZB/nl.fokkezb.
 
 	**NOTE:** The `<Widget />` tag can't be the root element due to an Alloy limitation!
 
-4. Add your `myRefresher` function to the controller and call the `e.hide()` callback when you're done:
+2. Add your `myRefresher` function to the controller and call the `e.hide()` callback when you're done:
 
 		function myRefresher(e) {
 			myCollection.fetch({
@@ -55,11 +45,11 @@ Also take a look at the [Infinite Scroll](https://github.com/FokkeZB/nl.fokkezb.
 			});
 		}
 
-5. Call the widget's `refresh()` to programmatically trigger the (initial) refresh:
+3. Call the widget's `refresh()` to programmatically trigger the (initial) refresh:
 
 		$.ptr.refresh();
 		
-6. To pass arguments to [`Ti.UI.createRefreshControl`](http://docs.appcelerator.com/platform/latest/#!/api/Titanium.UI-method-createRefreshControl) and [`createSwipeRefresh()`](https://github.com/iskugor/Ti.SwipeRefreshLayout#to-initialize) simply pass them to the widget as attributes of `<Widget>` or second arguments of `createWidget()`.
+4. To pass arguments to [`Ti.UI.createRefreshControl`](http://docs.appcelerator.com/platform/latest/#!/api/Titanium.UI-method-createRefreshControl) and [`createSwipeRefresh()`](https://github.com/iskugor/Ti.SwipeRefreshLayout#to-initialize) simply pass them to the widget as attributes of `<Widget>` or second arguments of `createWidget()`.
 		
 ## Methods
 Both platforms share the same API:
@@ -73,6 +63,9 @@ Both platforms share the same API:
 | getControl |            | Get the refresh control
 
 ## Changelog
+* 3.1
+  * Remove Modules for Android 
+  * compatibility 6.2 Titanium
 * 3.0
   * Removes `setTitle()`.
   * Passes all arguments/attributes on to `Ti.UI.createRefreshControl()` for iOS (e.g. to set title or tintColor) and `createSwipeRefresh()` for Android.
